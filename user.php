@@ -29,3 +29,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <button type="submit">新規登録</button>
 </form>
 <p><?= htmlspecialchars($error) ?></p>
+

@@ -5,11 +5,11 @@ $error = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $task_name = trim($_POST["task_name"]);
     $deadline = trim($_POST["deadline"]);
-    $user_name = $_SESSION["user_name"];
+    $user_name = $_SESSION["user_name"];  
     $status = trim($_POST["status"]);
     $priority = trim($_POST["priority"]);
 
-    if ($task_name === "" || $deadline === "" || $user_id === "" || $status === "" || $priority === "") {
+    if ($task_name === "" || $deadline === "" || $user_name === "" || $status === "" || $priority === "") {
         $error = "全ての項目に入力してください。";
     } else {
         $task_id = uniqid("task_");
@@ -43,4 +43,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <button type="submit">追加</button>
 </form>
 <p style="color:red;"><?= htmlspecialchars($error) ?></p>
-
