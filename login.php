@@ -40,3 +40,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </form>
 <p><?= htmlspecialchars($error) ?></p>
 <p><a href="user.php">アカウントがない場合</a></p>
+

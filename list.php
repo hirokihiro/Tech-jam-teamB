@@ -84,3 +84,4 @@ usort($tasks, function ($a, $b) use ($key, $sort_key, $status_order) {
     </table>
 </body>
 </html>
+

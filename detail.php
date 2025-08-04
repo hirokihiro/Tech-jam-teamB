@@ -62,3 +62,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete"])) {
   <input type="hidden" name="delete" value="1">
   <button type="submit">削除</button>
 </form>
+

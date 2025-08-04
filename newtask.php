@@ -66,3 +66,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <button type="submit">追加</button>
 </form>
 <p style="color:red;"><?= htmlspecialchars($error) ?></p>
+
