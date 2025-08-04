@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 <form method="post">
-  <label>タスク名: <input type="text" name="task_name" value="<?= htmlspecialchars($task[1]) ?>"></label><br>
+  <label>タスク内容: <input type="text" name="task_name" value="<?= htmlspecialchars($task[1]) ?>"></label><br>
   <label>期限: <input type="date" name="deadline" value="<?= htmlspecialchars($task[2]) ?>"></label><br>
   <label>進捗度:
     <select name="status">

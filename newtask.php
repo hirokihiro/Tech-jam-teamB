@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 <form method="post">
-  <label>タスク名: <input type="text" name="task_name"></label><br>
+  <label>タスク内容: <input type="text" name="task_name"></label><br>
   <label>期限: <input type="date" name="deadline"></label><br>
   <label>ステータス:
     <select name="status">
