@@ -57,19 +57,26 @@
         }
 
 
-                .task-list {
-                    margin-top: 1rem;
-                }
+        .task-list {
+            max-height: 70vh;
+            overflow-y: auto;
+            position: relative;
+            padding-right: 0.5rem;
+        }
 
         .task {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            transform: scale(var(--scroll-scale, 1));
+            opacity: var(--scroll-opacity, 1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-origin: center;
             border: 2px solid #000;
             background: #eee;
             padding: 1rem;
             margin-bottom: 1rem;
         }
+
+
+
 
         .task.small {
             width: 80%;
@@ -121,4 +128,39 @@
         }
 
 
-        
+        .fixed-add-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.fixed-add-button button {
+    padding: 0.8rem 1.2rem;
+    font-size: 16px;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.floating-form {
+    position: fixed;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    background: white;
+    padding: 1.5rem;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 16px 16px 0 0;
+    z-index: 999;
+    transition: bottom 0.3s ease;
+}
+
+.floating-form.active {
+    bottom: 0;
+}

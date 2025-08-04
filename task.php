@@ -40,14 +40,13 @@ if (file_exists("tasks.csv")) {
     }
     fclose($file);
 
-    // ソート処理
     usort($tasks, function ($a, $b) use ($sort_key) {
         switch ($sort_key) {
-            case 'priority': // 優先度（数字が大きいほど優先）
+            case 'priority':
                 return (int)$b[5] - (int)$a[5];
-            case 'deadline': // 期限（昇順）
+            case 'deadline':
                 return strtotime($a[2]) - strtotime($b[2]);
-            case 'status': // ステータス（文字順）
+            case 'status':
                 return strcmp($a[4], $b[4]);
             default:
                 return 0;
@@ -64,10 +63,7 @@ if (file_exists("tasks.csv")) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
-
 </head>
-<script src="js/task.js"></script>
-
 <body>
     <header>
         <h1>タスク管理アプリ</h1>
@@ -92,47 +88,44 @@ if (file_exists("tasks.csv")) {
                     </div>
                 <?php endforeach; ?>
             </div>
-
-            <div class="add-task">
-                <h2>タスク追加フォーム</h2>
-                <form method="post">
-                    <label>タスク名: <input type="text" name="task_name"></label><br>
-                    <label>期限: <input type="date" name="deadline"></label><br>
-                    <label>ステータス:
-                        <select name="status">
-                            <option value="未完了">未完了</option>
-                            <option value="進行中">進行中</option>
-                            <option value="完了">完了</option>
-                        </select>
-                    </label><br>
-                    <label>優先度:
-                        <select name="priority">
-                            <option value="1">低</option>
-                            <option value="2">中</option>
-                            <option value="3">高</option>
-                        </select>
-                    </label><br>
-                    <button type="submit">追加</button>
-                </form>
-                <p style="color:red;"><?= htmlspecialchars($error) ?></p>
-            </div>
         </section>
 
-       <aside class="calendar">
-                <div class="calendar-box">
+        <aside class="calendar">
+            <div class="calendar-box">
                 <div id="calendar-container"></div>
-
-                <!-- 黒枠のボックス -->
-                <div id="selected-date-box" class="date-display-box">
-                <!-- JSでここに日付を表示 -->
-                </div>
+                <div id="selected-date-box" class="date-display-box"></div>
             </div>
         </aside>
 
+        <div class="fixed-add-button">
+            <button id="show-form-btn">＋ タスクを追加</button>
+        </div>
 
-
-
-        
+        <div class="floating-form" id="floating-form">
+            <form method="post">
+                <h2>タスク追加</h2>
+                <label for="task_name">タスク名:</label>
+                <input type="text" id="task_name" name="task_name" required><br>
+                <label for="deadline">期限:</label>
+                <input type="date" id="deadline" name="deadline" required><br>
+                <label for="status">ステータス:</label>
+                <select name="status" id="status">
+                    <option value="未完了">未完了</option>
+                    <option value="進行中">進行中</option>
+                    <option value="完了">完了</option>
+                </select><br>
+                <label for="priority">優先度:</label>
+                <select name="priority" id="priority">
+                    <option value="1">低</option>
+                    <option value="2">中</option>
+                    <option value="3">高</option>
+                </select><br>
+                <button type="submit">追加</button>
+                <button type="button" id="cancel-form-btn">キャンセル</button>
+            </form>
+        </div>
     </main>
+
+    <script src="js/task.js"></script>
 </body>
 </html>
