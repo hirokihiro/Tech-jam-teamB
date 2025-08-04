@@ -19,7 +19,7 @@
             <div class="square square7"></div>
         </div>
         <div class="login-box">
-            <h1>アプリaa名</h1>
+            <h1>アプリabbbba名</h1>
             <form action="login.php" method="get">
                 <button type="submit" class="login-button">ログイン</button>
             </form>
