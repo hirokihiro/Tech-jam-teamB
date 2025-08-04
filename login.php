@@ -13,27 +13,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $found = false;
 
         while (($data = fgetcsv($users)) !== false) {
-            if ($data[1] === $name && $data[2] === $password) {
-                $_SESSION["user_id"] = $data[0];
-                $_SESSION["user_name"] = $data[1];
-                $found = true;
-                header("Location: list.php");
-                exit();
+            if ($data[1] === $name) {
+                if (password_verify($password, $data[2])) {
+                    $_SESSION["user_id"] = $data[0];
+                    $_SESSION["user_name"] = $data[1];
+                    $found = true;
+                    fclose($users);
+                    header("Location: list.php");
+                    exit();
+                }
             }
         }
         fclose($users);
 
-        if (!$found) $error = "ログイン失敗";
+        if (!$found) {
+            $error = "ログインに失敗しました";
+        }
     }
 }
-
 ?>
 
 
-
 <form method="post">
-    <label>名前:<input type="text" name="name"></label><br>
-    <label>パスワード:<input type="password" name="password"></label><br>
+    <label>Name<input type="text" name="name"></label><br>
+    <label>Password<input type="password" name="password"></label><br>
     <button type="submit">ログイン</button>
 </form>
 <p><?= htmlspecialchars($error) ?></p>
