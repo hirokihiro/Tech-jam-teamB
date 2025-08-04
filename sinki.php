@@ -1,11 +1,10 @@
-<!-- http://localhost:8888/Tech-jam-teamB/index.php -->
-
+<!-- http://localhost:8888/TECH-JAM-TEAMB/index.php　-->
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ログイン画面</title>
+    <title>新規登録画面</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,13 +20,17 @@
         </div>
         <div class="login-box">
             <h1>アプリ名</h1>
-            <form action="login.php" method="get">
-                <button type="submit" class="login-button">ログイン</button>
-            </form>
-            <p class="no-account">
-                <a href="sinki.php">アカウントがない場合はこちら</a>
-            </p>
+            <h2 class="register-title">新規登録</h2>
 
+            <form action="register_process.php" method="post" class="register-form">
+                <label for="name">Name</label><br>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="password">Password</label><br>
+                <input type="password" id="password" name="password" required><br>
+
+                <button type="submit" class="login-button">登録</button>
+            </form>
         </div>
     </div>
 </body>
