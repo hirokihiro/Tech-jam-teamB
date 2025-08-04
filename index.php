@@ -4,7 +4,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ログイン画面</title>
+    <title>ホーム画面</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
