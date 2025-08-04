@@ -61,7 +61,13 @@ if (file_exists("tasks.csv")) {
     <meta charset="UTF-8">
     <title>タスク管理アプリ</title>
     <link rel="stylesheet" href="css/task.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
+
 </head>
+<script src="js/task.js"></script>
+
 <body>
     <header>
         <h1>タスク管理アプリ</h1>
@@ -112,9 +118,21 @@ if (file_exists("tasks.csv")) {
             </div>
         </section>
 
-        <aside class="calendar">
-            <div class="calendar-box">カレンダー（ここにカレンダーUIを追加可）</div>
+       <aside class="calendar">
+                <div class="calendar-box">
+                <div id="calendar-container"></div>
+
+                <!-- 黒枠のボックス -->
+                <div id="selected-date-box" class="date-display-box">
+                <!-- JSでここに日付を表示 -->
+                </div>
+            </div>
         </aside>
+
+
+
+
+        
     </main>
 </body>
 </html>
