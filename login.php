@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $_SESSION["user_name"] = $data[2];
                     $found = true;
                     fclose($users);
-                    header("Location: list.php");
+                    header("Location: task.php");
                     exit();
                 }
             }
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <button type="submit" class="login-button">ログイン</button>
             </form>
             <p class="no-account"><?= htmlspecialchars($error) ?></p>
-            <p class="no-account"><a href="user.php">アカウントがない場合</a></p>
+            <p class="no-account"><a href="sinki.php">アカウントがない場合</a></p>
         </div>
     </div>
 </body>

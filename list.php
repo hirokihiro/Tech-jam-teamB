@@ -1,4 +1,22 @@
 <?php
+// ここにPHPの処理を書く（例：CSV読み込みなど）
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>タスクリスト</title>
+</head>
+<body>
+    <h1>タスクリスト画面</h1>
+    <p>ここにタスク一覧を表示します。</p>
+    <a href="task.php">タスク追加画面へ戻る</a>
+</body>
+</html>
+
+<!--　気にしないでください -->
+<?php
 session_start();
 if (!isset($_SESSION["user_id"])) {
     header("Location: login.php");

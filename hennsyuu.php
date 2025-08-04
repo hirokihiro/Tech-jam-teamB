@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>タスク詳細</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/hennsyuu.css">
 </head>
 <body>
     <div class="login-container">

@@ -1,5 +1,30 @@
-<!-- http://localhost:8888/TECH-JAM-TEAMB/index.php　-->
+<?php
+session_start();
+$error = "";
+$name = "";
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $name = trim($_POST["name"]);
+    $password = trim($_POST["password"]);
+
+    if ($name === "" || $password === "") {
+        $error = "名前とパスワードを入力してください。";
+    } else {
+        $register_date = date("Y-m-d");
+        $user_id = uniqid("user_");
+
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        $file = fopen("users.csv", "a");
+        fputcsv($file, [$user_id, $name, $hashed_password, $register_date]);
+        fclose($file);
+
+        $_SESSION["user_name"] = $name;
+        header("Location: login.php");
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -21,15 +46,21 @@
         <div class="login-box">
             <h1>アプリ名</h1>
             <h2 class="register-title">新規登録</h2>
+
             <form method="post" class="register-form">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required value="<?= htmlspecialchars($name) ?>">
 
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
 
                 <button type="submit" class="login-button">新規登録</button>
             </form>
+
+            <?php if ($error): ?>
+                <p class="error"><?= htmlspecialchars($error) ?></p>
+            <?php endif; ?>
+
             <p class="no-account">
                 <a href="login.php">ログイン画面へ戻る</a>
             </p>
