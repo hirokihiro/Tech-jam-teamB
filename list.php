@@ -19,5 +19,4 @@ $key = ["deadline" => 2, "status" => 4, "priority" => 5];
 usort($tasks, function ($a, $b) use ($keys, $sort_key) {
     return strcmp($a[$keys[$sort_key]], $b[$keys[$sort_key]]);
 });
-
 ?>
