@@ -33,8 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 <form method="post">
-    <label>名前: <input type="text" name="name"></label><br>
-    <label>パスワード: <input type="password" name="password"></label><br>
+    <label>名前:<input type="text" name="name"></label><br>
+    <label>パスワード:<input type="password" name="password"></label><br>
     <button type="submit">ログイン</button>
 </form>
 <p><?= htmlspecialchars($error) ?></p>
