@@ -1,6 +1,5 @@
 <!-- http://localhost:8888/Tech-jam-teamB/index.php -->
 
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>

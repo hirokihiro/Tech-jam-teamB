@@ -2,42 +2,44 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>タスク詳細</title>
+    <title>タスク管理アプリ</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div class="login-container">
-        <div class="background-shapes">
-            <div class="square square1"></div>
-            <div class="square square2"></div>
-            <div class="square square3"></div>
-            <div class="square square4"></div>
-            <div class="square square5"></div>
-            <div class="square square6"></div>
-            <div class="square square7"></div>
-        </div>
+    <header>
+        <h1>アプリ名</h1>
+    </header>
 
-        <div class="task-box">
-            <header class="task-header">
-                <div class="app-name">アプリ名</div>
-                <a href="index.php" class="back-button">戻る</a>
-            </header>
-
-            <div class="task-content">
-                <div class="task-card">
-                    <div class="task-detail-box">
-                        <p class="task-content-text">タスク内容</p>
-                    </div>
-                    <div class="task-info">
-                        <button class="info-button">進捗度</button>
-                        <button class="info-button">期限</button>
-                    </div>
-                    <div class="edit-button-container">
-                        <button class="edit-button">編集</button>
-                    </div>
-                </div>
+    <main class="container">
+        <section class="left-panel">
+            <div class="sort-tabs">
+                <button class="active">優先度順</button>
+                <button>期限順</button>
+                <button>進捗度順</button>
             </div>
-        </div>
-    </div>
+
+            <div class="task-list">
+                <div class="task">
+                    <div class="task-content"></div>
+                    <button class="detail-btn">詳細</button>
+                </div>
+                <div class="task">
+                    <div class="task-content"></div>
+                    <button class="detail-btn">詳細</button>
+                </div>
+                <div class="task small"></div>
+                <div class="task tiny"></div>
+            </div>
+
+            <div class="add-task">
+                <button>＋ タスクを追加</button>
+            </div>
+        </section>
+
+        <aside class="calendar">
+            <div class="calendar-box">カレンダー</div>
+        </aside>
+    </main>
 </body>
 </html>

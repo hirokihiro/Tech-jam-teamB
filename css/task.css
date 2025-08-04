@@ -1,0 +1,99 @@
+ body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+        }
+
+        header {
+            text-align: center;
+            padding: 1rem;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100vh - 60px);
+        }
+
+        .left-panel {
+            flex: 3;
+            padding: 1rem;
+            border-right: 2px solid #00aacc;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .sort-tabs {
+            display: flex;
+            border-bottom: 2px solid #00aacc;
+        }
+
+        .sort-tabs button {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            background: #e0f7fa;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .sort-tabs .active {
+            background: #00bcd4;
+            color: white;
+        }
+
+        .task-list {
+            margin-top: 1rem;
+        }
+
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid #000;
+            background: #eee;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .task.small {
+            width: 80%;
+            height: 40px;
+            background: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .task.tiny {
+            width: 70%;
+            height: 30px;
+            background: #ccc;
+        }
+
+        .detail-btn {
+            border: 2px solid #00bcd4;
+            background: white;
+            padding: 0.25rem 1rem;
+            cursor: pointer;
+        }
+
+        .add-task {
+            margin-top: 2rem;
+            border: 1px solid #000;
+            padding: 1rem;
+            background: white;
+            width: fit-content;
+        }
+
+        .calendar {
+            flex: 1;
+            padding: 1rem;
+        }
+
+        .calendar-box {
+            background: #ccc;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }

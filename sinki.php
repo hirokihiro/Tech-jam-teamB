@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>新規登録画面</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sinki.css">
 </head>
 <body>
     <div class="login-container">
@@ -21,16 +21,18 @@
         <div class="login-box">
             <h1>アプリ名</h1>
             <h2 class="register-title">新規登録</h2>
+            <form method="post" class="register-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
 
-            <form action="register_process.php" method="post" class="register-form">
-                <label for="name">Name</label><br>
-                <input type="text" id="name" name="name" required><br>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
 
-                <label for="password">Password</label><br>
-                <input type="password" id="password" name="password" required><br>
-
-                <button type="submit" class="login-button">登録</button>
+                <button type="submit" class="login-button">新規登録</button>
             </form>
+            <p class="no-account">
+                <a href="login.php">ログイン画面へ戻る</a>
+            </p>
         </div>
     </div>
 </body>
