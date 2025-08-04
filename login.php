@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($data[1] === $name) {
                 if (password_verify($password, $data[2])) {
                     $_SESSION["user_id"] = $data[0];
-                    $_SESSION["user_name"] = $data[1];
+                    $_SESSION["user_name"] = $data[2];
                     $found = true;
                     fclose($users);
                     header("Location: list.php");
