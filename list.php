@@ -23,13 +23,11 @@ if (!isset($_SESSION["user_id"])) {
     exit();
 }
 
-
 $allowed_keys = ["deadline", "status", "priority"];
 $sort_key = $_GET["sort"] ?? "deadline";
 if (!in_array($sort_key, $allowed_keys)) {
     $sort_key = "deadline";
 }
-
 
 $tasks = [];
 if (($fp = fopen("tasks.csv", "r")) !== false) {
@@ -38,6 +36,7 @@ if (($fp = fopen("tasks.csv", "r")) !== false) {
     }
     fclose($fp);
 }
+
 
 $key = [
     "deadline" => 2,
@@ -52,13 +51,11 @@ $priority_labels = [
     "3" => "高",
 ];
 
-
 $status_order = [
     "未完了" => 0,
     "進行中" => 1,
     "完了" => 2,
 ];
-
 
 usort($tasks, function ($a, $b) use ($key, $sort_key, $status_order) {
     $index = $key[$sort_key];
@@ -85,11 +82,12 @@ usort($tasks, function ($a, $b) use ($key, $sort_key, $status_order) {
 </head>
 <body>
     <h2><a href="list.php" style="text-decoration:none; color:inherit;">アプリ名</a></h2>
+    <a href="logout.php">ログアウト</a>
     <a href="newtask.php">新規タスク追加</a>
     <table>
         <tr>
             <th><a href="?sort=deadline">期限</a></th>
-            <th><a href="?sort=status">ステータス</a></th>
+            <th><a href="?sort=status">進捗度</a></th>
             <th><a href="?sort=priority">優先度</a></th>
         </tr>
         <?php foreach ($tasks as $t): ?>
@@ -104,3 +102,4 @@ usort($tasks, function ($a, $b) use ($key, $sort_key, $status_order) {
     </table>
 </body>
 </html>
+

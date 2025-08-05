@@ -43,6 +43,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <h1>タスク管理アプリ - ユーザー登録</h1>
 </header>
 
+
+<form method="post">
+    <label>Name<input type="text" name="name" value="<?= htmlspecialchars($name ?? '') ?>"></label><br>
+    <label>Password<input type="password" name="password"></label><br>
+    <button type="submit">新規登録</button>
+</form>
+<p><?= htmlspecialchars($error) ?></p>
+
+
 <main class="container">
     <section class="form-section">
         <h2>新規ユーザー登録</h2>
