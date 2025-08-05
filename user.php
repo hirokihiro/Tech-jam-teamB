@@ -14,19 +14,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $user_id = uniqid("user_");
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        // ユーザー情報をCSVに保存
         $file = fopen("users.csv", "a");
         if ($file) {
             fputcsv($file, [$user_id, $name, $hashed_password, $register_date]);
             fclose($file);
 
-            // セッションに保存してログイン済みとする（仮）
+            $_SESSION["user_id"] = $user_id;
             $_SESSION["user_name"] = $name;
 
             header("Location: list.php");
             exit();
         } else {
-            $error = "ユーザー情報の保存に失敗しました。";
+            $error = "登録に失敗しました。";
         }
     }
 }
@@ -43,15 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <h1>タスク管理アプリ - ユーザー登録</h1>
 </header>
 
-
-<form method="post">
-    <label>Name<input type="text" name="name" value="<?= htmlspecialchars($name ?? '') ?>"></label><br>
-    <label>Password<input type="password" name="password"></label><br>
-    <button type="submit">新規登録</button>
-</form>
-<p><?= htmlspecialchars($error) ?></p>
-
-
 <main class="container">
     <section class="form-section">
         <h2>新規ユーザー登録</h2>
@@ -64,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </label><br>
             <button type="submit">登録する</button>
         </form>
+
         <?php if ($error): ?>
             <p style="color: red;"><?= htmlspecialchars($error) ?></p>
         <?php endif; ?>
