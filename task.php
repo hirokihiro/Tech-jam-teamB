@@ -66,6 +66,7 @@ if (file_exists("tasks.csv")) {
 ?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>タスク管理アプリ</title>
@@ -74,6 +75,7 @@ if (file_exists("tasks.csv")) {
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
 </head>
+
 <body>
     <header>
         <h1>タスク管理アプリ</h1>
@@ -94,7 +96,10 @@ if (file_exists("tasks.csv")) {
                             <?= htmlspecialchars($task[1]) ?>（期限: <?= htmlspecialchars($task[2]) ?>）<br>
                             担当者: <?= htmlspecialchars($task[3]) ?> / ステータス: <?= htmlspecialchars($task[4]) ?> / 優先度: <?= htmlspecialchars($task[5]) ?>
                         </div>
-                        <button class="detail-btn">詳細</button>
+                        <form action="task_syousai.php" method="get" style="display:inline;">
+                            <input type="hidden" name="task_id" value="<?= htmlspecialchars($task[0]) ?>">
+                            <button type="submit" class="detail-btn">詳細</button>
+                        </form>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -154,5 +159,3 @@ if (file_exists("tasks.csv")) {
     <script src="js/task.js"></script>
 </body>
 </html>
-
-
