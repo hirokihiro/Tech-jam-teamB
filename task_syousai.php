@@ -63,7 +63,10 @@ $progress = $task_data ? getProgressPercent($task_data[4]) : 0;
                 </div>
 
                 <div class="task-edit-btn">
-                    <button>編集</button>
+                    <form action="hennsyuu.php" method="get">
+                        <input type="hidden" name="task_id" value="<?= htmlspecialchars($task_data[0]) ?>">
+                        <button type="submit">編集</button>
+                    </form>
                 </div>
             </div>
         <?php else: ?>

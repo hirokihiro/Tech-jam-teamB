@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <button type="submit" class="login-button">ログイン</button>
         </form>
         <p class="no-account"><?= htmlspecialchars($error) ?></p>
-        <p class="no-account"><a href="user.php">アカウントがない場合</a></p>
+        <p class="no-account"><a href="sinki.php">アカウントがない場合</a></p>
     </div>
 </div>
 </body>
