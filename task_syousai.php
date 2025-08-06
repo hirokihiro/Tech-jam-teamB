@@ -32,42 +32,54 @@ $progress = $task_data ? getProgressPercent($task_data[4]) : 0;
     <title>タスク詳細</title>
     <link rel="stylesheet" href="css/task_syousai.css">
     <style>
-        /* JSで進捗バーを動的に操作する場合はここで指定もOK */
         .progress-fill {
             width: <?= $progress ?>%;
         }
     </style>
 </head>
 <body>
+    <!-- ヘッダー（中央） -->
     <header>
         <h1>アプリ名</h1>
+        <hr>
     </header>
 
     <main class="detail-container">
+        <!-- 戻るボタン -->
         <a href="task.php" class="back-button">← 戻る</a>
 
         <?php if ($task_data): ?>
             <div class="task-detail-box">
+                
+                <!-- タスク名または番号 -->
                 <div class="task-content-box">
                     <h2><?= htmlspecialchars($task_data[1]) ?></h2>
                 </div>
 
+                <!-- 担当者 -->
                 <div class="task-info">
+                    <p><strong>担当者:</strong> <?= htmlspecialchars($task_data[3]) ?></p>
+
+                    <!-- 進捗度 -->
                     <p><strong>進捗度:</strong> <?= htmlspecialchars($task_data[4]) ?></p>
                     <div class="progress-container">
                         <div class="progress-bar">
                             <div class="progress-fill"></div>
                         </div>
                     </div>
+
+                    <!-- 期限 -->
                     <p><strong>期限:</strong> <?= htmlspecialchars($task_data[2]) ?></p>
                 </div>
 
+                <!-- 編集ボタン -->
                 <div class="task-edit-btn">
                     <form action="hennsyuu.php" method="get">
                         <input type="hidden" name="task_id" value="<?= htmlspecialchars($task_data[0]) ?>">
                         <button type="submit">編集</button>
                     </form>
                 </div>
+
             </div>
         <?php else: ?>
             <p>タスクが見つかりませんでした。</p>
