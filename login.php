@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 
     <div class="login-box">
-        <h1>アプリ名</h1>
+        <h1>チータス君</h1>
         <h2 class="register-title">ログイン</h2>
         <form method="post" class="register-form">
             <label for="name">Name</label>

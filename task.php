@@ -86,7 +86,7 @@ if (file_exists("tasks.csv")) {
 
 <body>
     <header>
-        <h1>タスク管理アプリ</h1>
+        <h1>チータス君</h1>
         <nav>
             <a href="mypage.php" class="mypage-link">マイページ</a>
         </nav>

@@ -145,3 +145,32 @@ body::after {
     bottom: -100px;
     right: -100px;
 }
+
+/* 優先度スタイル */
+.priority-high {
+    background-color: #ffecec;
+    color: #d32f2f;
+    font-weight: bold;
+}
+.priority-middle {
+    background-color: #fff8dc;
+    color: #f9a825;
+}
+.priority-low {
+    background-color: #e0ffe0;
+    color: #388e3c;
+}
+
+ul li.priority-high {
+    background-color: #ffecec !important;
+    color: #d32f2f !important;
+    font-weight: bold;
+}
+ul li.priority-middle {
+    background-color: #fff8dc !important;
+    color: #f9a825 !important;
+}
+ul li.priority-low {
+    background-color: #e0ffe0 !important;
+    color: #388e3c !important;
+}

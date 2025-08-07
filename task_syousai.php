@@ -37,7 +37,7 @@ $progress = $task_data ? getProgressPercent($task_data[4]) : 0;
 <body>
     
     <header>
-        <h1>アプリ名</h1>
+        <h1>チータス君</h1>
         
     </header>
 

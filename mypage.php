@@ -73,6 +73,20 @@ if (file_exists("tasks.csv")) {
         }
     });
 }
+
+function getPriorityClass($priority)
+{
+    switch ($priority) {
+        case '高':
+            return 'priority-high';
+        case '中':
+            return 'priority-middle';
+        case '低':
+            return 'priority-low';
+        default:
+            return '';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -111,11 +125,13 @@ if (file_exists("tasks.csv")) {
         </section>
 
         <section class="box">
-            <h2>★2以上の自分のタスク一覧</h2>
+            <h2>優先度中以上の自分のタスク一覧</h2>
             <ul>
                 <?php foreach ($tasks as $t):
-                    if ($t[3] === $_SESSION['user_name'] && (int)$t[5] >= 2): ?>
-                        <li><?= htmlspecialchars($t[1]) ?>（期限: <?= htmlspecialchars($t[2]) ?>）</li>
+                    if ($t[3] === $_SESSION['user_name'] && in_array($t[5], ['中', '高'])): ?>
+                        <li class="<?= getPriorityClass($t[5]) ?>">
+                            <?= htmlspecialchars($t[1]) ?>（期限: <?= htmlspecialchars($t[2]) ?>）
+                        </li>
                 <?php endif;
                 endforeach; ?>
             </ul>
