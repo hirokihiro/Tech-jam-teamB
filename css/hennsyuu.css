@@ -1,72 +1,174 @@
+/* 全体共通設定 */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: sans-serif;
-    background-color: #fff;
-    min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #e8fafa;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* アプリ名と横線 */
-.header {
-    text-align: center;
-    padding: 20px 0 10px;
-    font-size: 24px;
-    font-weight: bold;
-    border-bottom: 2px solid #0098a0;
-    margin-bottom: 10px;
+/* 背景装飾（斜めブロック） */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  background-color: #d0f0f7;
+  transform: rotate(-45deg);
+  border-radius: 40px;
+  z-index: 0;
 }
 
-/* 戻るボタン：線の下・左上 */
-.back-button {
-    margin: 20px;
-    border: 2px solid #00bfff;
-    background-color: white;
-    color: #00bfff;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
+body::after {
+  content: "";
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background-color: #d0f0f7;
+  transform: rotate(45deg);
+  border-radius: 40px;
+  z-index: 0;
 }
 
-/* 中央に来るカード全体 */
+/* 編集フォームカード */
 .task-card {
-    border: 2px solid #0098a0;
-    padding: 40px;
-    width: 80%;
-    max-width: 800px;
-    margin: 40px auto 0;
-    background-color: #fff;
+  background-color: white;
+  border: none;
+  padding: 40px;
+  width: 90%;
+  max-width: 700px;
+  margin: 60px auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 1;
 }
 
-/* 各項目 */
+/* 各フォーム要素 */
 .task-item {
-    margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .task-item label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 18px;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #219EBC;
 }
 
-.task-content {
-    height: 40px;
-    background-color: #dcdcdc;
-    border-radius: 6px;
-    width: 100%;
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #b0dfe8;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
 }
 
-/* 削除ボタン */
+input:focus,
+select:focus {
+  border-color: #219EBC;
+  outline: none;
+}
+
+/* ボタンエリア */
+.task-item:last-child {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.update-button {
+  background-color: #219EBC;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.update-button:hover {
+  background-color: #197b99;
+}
+
 .delete-button {
-    float: right;
-    background-color: #ffb3b3;
-    border: 2px solid red;
-    color: black;
+  background-color: #ffe6e6;
+  border: 2px solid #ff4d4d;
+  color: #a60000;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+/* エラーメッセージ */
+.error {
+  color: red;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* 戻るリンク */
+.back-link-container {
+  text-align: left;
+  margin: 30px auto;
+  width: 90%;
+  max-width: 700px;
+}
+
+.back-link {
+  color: #219EBC;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding-left: 4px;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #176f8a;
+  text-decoration: underline;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 10px;
+    border: 2px solid #219EBC;
+    background-color: white;
+    color: #219EBC;
     padding: 8px 16px;
+    border-radius: 6px;
     cursor: pointer;
-    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.back-button:hover {
+    background-color: #219EBC;
+    color: white;
 }

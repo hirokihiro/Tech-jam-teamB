@@ -1,33 +1,48 @@
-// カレンダー関係
 document.addEventListener("DOMContentLoaded", function () {
-    flatpickr("#calendar-container", {
-        locale: "ja",
-        inline: true,
-        dateFormat: "Y年m月d日",
-        onChange: function (selectedDates, dateStr) {
-            // 選択された日付を枠内に表示
-            document.getElementById("selected-date-box").textContent = "選択日: " + dateStr;
-        }
-    });
-});
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  // カレンダーの初期化（既存のままでOK）
   flatpickr("#calendar-container", {
     locale: "ja",
     inline: true,
-    dateFormat: "Y年m月d日",
-    onChange: function (selectedDates, dateStr) {
-      document.getElementById("selected-date-box").textContent = "選択日: " + dateStr;
+    disableMobile: true,
+    dateFormat: "Y-m-d",
+    onDayCreate: function (_, __, ___, dayElem) {
+      const dateStr = dayElem.dateObj.toISOString().slice(0, 10);
+      if (deadlineDates.includes(dateStr)) {
+        dayElem.style.backgroundColor = "#ffeaa7";
+        dayElem.style.borderRadius = "50%";
+      }
+    },
+    onChange: function (selectedDates) {
+      const isoDate = selectedDates[0]?.toISOString().slice(0, 10);
+      const tasks = taskTitlesByDate[isoDate] || [];
+      const box = document.getElementById("selected-date-box");
+      if (tasks.length > 0) {
+        box.innerHTML = `📅 ${isoDate} のタスク:<ul>` + tasks.map(t => `<li>${t}</li>`).join("") + "</ul>";
+      } else {
+        box.textContent = `📅 ${isoDate} にタスクはありません`;
+      }
+      const target = document.querySelector(`.task[data-deadline="${isoDate}"]`);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+        target.classList.add("highlight");
+        setTimeout(() => target.classList.remove("highlight"), 2000);
+      }
     }
   });
 
-  // スクロール演出
+  const showFormBtn = document.getElementById("show-form-btn");
+  const cancelFormBtn = document.getElementById("cancel-form-btn");
+  const floatingForm = document.getElementById("floating-form");
+
+  if (showFormBtn && cancelFormBtn && floatingForm) {
+    showFormBtn.addEventListener("click", () => floatingForm.classList.add("active"));
+    cancelFormBtn.addEventListener("click", () => floatingForm.classList.remove("active"));
+  }
+
   const taskList = document.querySelector('.task-list');
   const tasks = document.querySelectorAll('.task');
 
   function updateTaskScales() {
+    if (!taskList) return;
     const listRect = taskList.getBoundingClientRect();
     const listTop = listRect.top;
     const listHeight = listRect.height;
@@ -36,16 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const rect = task.getBoundingClientRect();
       const offset = rect.top - listTop;
       const relativeY = offset / listHeight;
-
-      // スケール（大きさ）設定：上→1.02、下→0.85
-      let scale = 1.02 - (relativeY * 0.2);
-      scale = Math.max(0.85, Math.min(1.02, scale));
-
-      // 透明度設定：上→1、下→0.5
+      let scale = 1.05 - (relativeY * 0.15);
+      scale = Math.max(0.9, Math.min(1.05, scale));
       let opacity = 1 - (relativeY * 0.5);
       opacity = Math.max(0.5, Math.min(1, opacity));
-
-      // CSS変数で渡す
       task.style.setProperty('--scroll-scale', scale);
       task.style.setProperty('--scroll-opacity', opacity);
     });
@@ -54,26 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (taskList && tasks.length > 0) {
     taskList.addEventListener('scroll', updateTaskScales);
     window.addEventListener('resize', updateTaskScales);
-    updateTaskScales(); // 初期実行
+    updateTaskScales();
   }
 });
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const showFormBtn = document.getElementById("show-form-btn");
-    const cancelFormBtn = document.getElementById("cancel-form-btn");
-    const floatingForm = document.getElementById("floating-form");
-
-    if (showFormBtn && cancelFormBtn && floatingForm) {
-        showFormBtn.addEventListener("click", () => {
-            floatingForm.classList.add("active");
-        });
-
-        cancelFormBtn.addEventListener("click", () => {
-            floatingForm.classList.remove("active");
-        });
-    }
-});
-
-

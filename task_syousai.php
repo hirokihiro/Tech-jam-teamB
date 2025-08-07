@@ -31,17 +31,14 @@ $progress = $task_data ? getProgressPercent($task_data[4]) : 0;
     <meta charset="UTF-8">
     <title>タスク詳細</title>
     <link rel="stylesheet" href="css/task_syousai.css">
-    <style>
-        .progress-fill {
-            width: <?= $progress ?>%;
-        }
-    </style>
+   
+    
 </head>
 <body>
-    <!-- ヘッダー（中央） -->
+    
     <header>
         <h1>アプリ名</h1>
-        <hr>
+        
     </header>
 
     <main class="detail-container">
